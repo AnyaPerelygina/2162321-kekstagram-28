@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Анна Перелыгина](https://up.htmlacademy.ru/javascript/28/user/2162321).
-* Наставник: `Неизвестно`.
+- Студент: [Анна Перелыгина](https://up.htmlacademy.ru/javascript/28/user/2162321).
+- Наставник: [Андрей Даниленко](https://htmlacademy.ru/profile/id1205385).
 
 ---
 
