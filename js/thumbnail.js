@@ -17,7 +17,8 @@ const createThumbnail = (data) => {
   thumbnail.querySelector('.picture__comments').textContent = comments.length;
   thumbnail.querySelector('.picture__likes').textContent = likes;
 
-  thumbnail.addEventListener('click', () => {
+  thumbnail.addEventListener('click', (event) => {
+    event.preventDefault();
     openBigPicture(data);
   });
 
