@@ -1,6 +1,6 @@
 import {openBigPicture} from './big-picture.js';
 import {getData} from './api.js';
-import {onGetFail} from './get-messages.js';
+import {onGetFail} from './get-message.js';
 
 const GET_URL = 'https://28.javascript.pages.academy/kekstagram/data';
 

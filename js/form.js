@@ -1,7 +1,7 @@
 import {resetScale} from './scale.js';
 import {resetEffects} from './effect.js';
 import {sendData} from './api.js';
-import {renderFailMessage, renderSuccessMessage} from './send-messages.js';
+import {renderFailMessage, renderSuccessMessage} from './send-message.js';
 
 const GET_URL = 'https://28.javascript.pages.academy/kekstagram';
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
