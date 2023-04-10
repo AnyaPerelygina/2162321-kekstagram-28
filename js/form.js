@@ -1,6 +1,9 @@
 import {resetScale} from './scale.js';
 import {resetEffects} from './effect.js';
+import {sendData} from './api.js';
+import {renderFailMessage, renderSuccessMessage} from './send-messages.js';
 
+const GET_URL = 'https://28.javascript.pages.academy/kekstagram';
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 const MAX_HASHTAG_COUNT = 5;
 const TAG_ERROR_TEXT = 'Хэштег введён неверно';
@@ -12,6 +15,10 @@ const cancelButton = document.querySelector('#upload-cancel');
 const fileField = document.querySelector('#upload-file');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
+
+const onSendFail = () => {
+  renderFailMessage();
+};
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -35,12 +42,20 @@ const closeModal = () => {
   document.removeEventListener('keydown', onDocumentKeydown);
 };
 
+const onSendSuccess = () => {
+  renderSuccessMessage();
+  closeModal();
+};
+
 const isTextFieldFocused = () =>
   document.activeElement === hashtagField ||
   document.activeElement === commentField;
 
 function onDocumentKeydown(evt) {
   if (evt.key === 'Escape' && !isTextFieldFocused()) {
+    if (document.querySelector('.error')) {
+      return;
+    }
     evt.preventDefault();
     closeModal();
   }
@@ -77,7 +92,9 @@ pristine.addValidator(
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  pristine.validate();
+  if (pristine.validate()) {
+    sendData(GET_URL, onSendSuccess, onSendFail, new FormData(evt.target));
+  }
 };
 
 const addFormAction = () => {
