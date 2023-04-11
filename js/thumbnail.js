@@ -1,6 +1,7 @@
 import {openBigPicture} from './big-picture.js';
 import {getData} from './api.js';
 import {onGetFail} from './get-message.js';
+import {initFilter} from './filter.js';
 
 const GET_URL = 'https://28.javascript.pages.academy/kekstagram/data';
 
@@ -19,8 +20,8 @@ const createThumbnail = (data) => {
   thumbnail.querySelector('.picture__comments').textContent = comments.length;
   thumbnail.querySelector('.picture__likes').textContent = likes;
 
-  thumbnail.addEventListener('click', (event) => {
-    event.preventDefault();
+  thumbnail.addEventListener('click', (evt) => {
+    evt.preventDefault();
     openBigPicture(data);
   });
 
@@ -37,7 +38,11 @@ const renderThumbnails = (data) => {
   container.append(fragment);
 };
 
-const onGetSuccess = (data) => renderThumbnails(data);
+const onGetSuccess = (data) => {
+  renderThumbnails(data);
+  renderThumbnails(data);
+  initFilter(data);
+};
 
 const getPicturesData = () => getData(GET_URL, onGetSuccess, onGetFail);
 
