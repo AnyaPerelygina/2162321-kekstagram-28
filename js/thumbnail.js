@@ -1,7 +1,9 @@
-import {createPhotos} from './data.js';
 import {openBigPicture} from './big-picture.js';
+import {getData} from './api.js';
+import {onGetFail} from './get-message.js';
 
-const pictures = createPhotos();
+const GET_URL = 'https://28.javascript.pages.academy/kekstagram/data';
+
 const thumbnailTemplate = document
   .querySelector('#picture')
   .content.querySelector('.picture');
@@ -25,14 +27,18 @@ const createThumbnail = (data) => {
   return thumbnail;
 };
 
-const renderThumbnails = () => {
+const renderThumbnails = (data) => {
   const fragment = document.createDocumentFragment();
-  pictures.forEach((picture) => {
-    const thumbnail = createThumbnail(picture);
+  data.forEach((item) => {
+    const thumbnail = createThumbnail(item);
     fragment.append(thumbnail);
   });
 
   container.append(fragment);
 };
 
-export {renderThumbnails};
+const onGetSuccess = (data) => renderThumbnails(data);
+
+const getPicturesData = () => getData(GET_URL, onGetSuccess, onGetFail);
+
+export {getPicturesData, renderThumbnails};
