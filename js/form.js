@@ -16,6 +16,7 @@ const fileField = document.querySelector('#upload-file');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 const submitButton = document.querySelector('.img-upload__submit');
+const imageElement = document.querySelector('.img-upload__preview img');
 
 const onSendFail = () => {
   renderFailMessage();
@@ -68,6 +69,8 @@ const onCancelButtonClick = () => closeModal();
 
 const onFileInputChange = () => {
   openModal();
+  const image = fileField.files[0];
+  imageElement.src = URL.createObjectURL(image);
 };
 
 const isValidTag = (tag) => VALID_SYMBOLS.test(tag);
