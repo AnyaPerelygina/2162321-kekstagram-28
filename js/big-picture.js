@@ -14,7 +14,7 @@ let comments = [];
 let showingComments = 0;
 
 const fillCommentCount = () => {
-  socialCommentsCount.innerHTML = `${showingComments} из <span class = "comments-count">${comments.length}</span> комментариев`;
+  socialCommentsCount.textContent = `${showingComments} из ${comments.length} комментариев`;
 };
 
 const createComment = (comment) => {
