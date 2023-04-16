@@ -77,11 +77,7 @@ const updateSlider = () => {
     start: chosenEffect.max,
   });
 
-  if (isDefault()) {
-    closeSlider();
-  } else {
-    openSlider();
-  }
+  return isDefault() ? closeSlider() : openSlider();
 };
 
 const onEffectsChange = (evt) => {
