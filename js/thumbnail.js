@@ -3,7 +3,7 @@ import {getData} from './api.js';
 import {onGetFail} from './get-message.js';
 import {initFilter} from './filter.js';
 
-const GET_URL = 'https://29.javascript.htmlacademy.pro/kekstagram';
+const GET_URL = 'https://28.javascript.pages.academy/kekstagram/data';
 
 const thumbnailTemplate = document
   .querySelector('#picture')
