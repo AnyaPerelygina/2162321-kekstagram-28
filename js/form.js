@@ -3,7 +3,7 @@ import {resetEffects} from './effect.js';
 import {sendData} from './api.js';
 import {renderFailMessage, renderSuccessMessage} from './send-message.js';
 
-const GET_URL = 'https://28.javascript.pages.academy/kekstagram';
+const GET_URL = 'https://29.javascript.htmlacademy.pro/kekstagram';
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 const MAX_HASHTAG_COUNT = 5;
 const TAG_ERROR_TEXT = 'Хэштег введён неверно';
